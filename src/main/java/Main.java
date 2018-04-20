@@ -19,7 +19,8 @@ public class Main{
         JsonMain gjson = jgson.fromJson(site_.toString(), JsonMain.class);
         gjson.result.forEach((PartMain p)->{
             String str = p.url.replaceAll("https://xn--80ac9aeh6f.xn--p1ai/", "").replaceAll("/", "");
-            ranobe.add(new Ranobe(p.title, str));
+
+            ranobe.add(new Ranobe(p.title.replaceAll("[\\\\/:*?\"<>|]", ""), str));
         });
         ranobe.forEach((Ranobe m)->{
             new File("C:/Users/admin/Desktop/ranobe/json/" + m.FILE + ".json");
