@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 class JsonMain {
-    ArrayList<PartMain> result = new ArrayList<>();
+    Result result = new Result();
+}
+
+class Result {
+    ArrayList<PartMain> books = new ArrayList<>();
 }
 
 class PartMain {

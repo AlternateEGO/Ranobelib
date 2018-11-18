@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,12 +13,13 @@ class Ranobe{
         NAME = name;
     }
     void start(){
-        String uri = Main.SITE + "v1/book/load/?book_alias=" + NAME;
+        String uri = Main.SITE + "v1/book/get/?bookAlias=" + NAME;
         StringBuilder site_ = new StringBuilder();
         Main.GetJson(uri, site_);
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonRanobe json = gson.fromJson(site_.toString(), JsonRanobe.class);
         System.out.println(FILE + "    " + json.result.parts.size());
+        Collections.reverse(json.result.parts);
         for(PartRanobe e : json.result.parts){
             if (!isGlava(json.result.parts.indexOf(e))){
                 GLAVA.add(new Glava(e.url, json.result.parts.indexOf(e), this, json));

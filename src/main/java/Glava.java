@@ -14,7 +14,7 @@ class Glava{
     String TEXT;
     Glava(String uri, int number, Ranobe ranobe, JsonRanobe jsonRanobe){
         uri = uri.replaceAll("/" + ranobe.NAME + "/", "").replaceAll("/", "");
-        uri = Main.SITE + "v1/part/load/?bookAlias=" + ranobe.NAME + "&partAlias=" + uri;
+        uri = Main.SITE + "v1/part/get/?bookAlias=" + ranobe.NAME + "&partAlias=" + uri;
         NUMBER = number;
         StringBuilder site = new StringBuilder();
         try {
