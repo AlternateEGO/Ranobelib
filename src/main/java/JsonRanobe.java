@@ -10,4 +10,6 @@ class ResultRanobe {
 
 class PartRanobe {
     String url;
+    boolean payment;
+    boolean partDonate;
 }

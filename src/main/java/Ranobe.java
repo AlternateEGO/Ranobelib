@@ -21,7 +21,7 @@ class Ranobe{
         System.out.println(FILE + "    " + json.result.parts.size());
         Collections.reverse(json.result.parts);
         for(PartRanobe e : json.result.parts){
-            if (!isGlava(json.result.parts.indexOf(e))){
+            if (!isGlava(json.result.parts.indexOf(e)) && !e.payment && !e.partDonate){
                 GLAVA.add(new Glava(e.url, json.result.parts.indexOf(e), this, json));
             }
         }
