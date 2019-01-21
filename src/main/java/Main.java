@@ -18,7 +18,6 @@ public class Main{
         Gson jgson = new GsonBuilder().serializeNulls().create();
         JsonMain gjson = jgson.fromJson(site_.toString(), JsonMain.class);
         gjson.result.books.forEach((PartMain p)->{
-            //https://xn--80ac9aeh6f.xn--p1ai/v1/part/get/?bookAlias=mir-boevykh-iskusstv-martial-world&partAlias=noindex-prolog-magicheskiy-kub
             String str = p.url.replaceAll("https://xn--80ac9aeh6f.xn--p1ai/", "").replaceAll("/", "");
             ranobe.add(new Ranobe(p.title.replaceAll("[\\\\/:*?\"<>|]", ""), str));
         });
@@ -47,6 +46,7 @@ public class Main{
                 StringBuilder text = new StringBuilder("<!DOCTYPE html><html><head><title>" + m.FILE + "</title>");
                 for(Glava glava : m.GLAVA){
                     try {
+                        glava.TEXT = glava.TEXT.replaceAll("null", "");
                         text.append(glava.TEXT);
                     }catch(Exception ignored){ }
                 }
