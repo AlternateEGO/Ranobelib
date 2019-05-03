@@ -14,6 +14,10 @@ class Ranobe{
     }
     void start(){
         String uri = Main.SITE + "v1/book/get/?bookAlias=" + NAME;
+        if (uri.equals("https://xn--80ac9aeh6f.xn--p1ai/v1/book/get/?bookAlias=zdraviy-smysl-voitelnitsy")) {
+            System.out.println("ERROR " + uri);
+            return;
+        }
         StringBuilder site_ = new StringBuilder();
         Main.GetJson(uri, site_);
         Gson gson = new GsonBuilder().serializeNulls().create();
