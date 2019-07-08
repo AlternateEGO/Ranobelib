@@ -13,21 +13,20 @@ class Ranobe{
         NAME = name;
     }
     void start(){
-        String uri = Main.SITE + "v1/book/get/?bookAlias=" + NAME;
-        if (uri.equals("https://xn--80ac9aeh6f.xn--p1ai/v1/book/get/?bookAlias=zdraviy-smysl-voitelnitsy")) {
-            System.out.println("ERROR " + uri);
-            return;
-        }
-        StringBuilder site_ = new StringBuilder();
-        Main.GetJson(uri, site_);
-        Gson gson = new GsonBuilder().serializeNulls().create();
-        JsonRanobe json = gson.fromJson(site_.toString(), JsonRanobe.class);
-        System.out.println(FILE + "    " + json.result.parts.size());
-        Collections.reverse(json.result.parts);
-        for(PartRanobe e : json.result.parts){
-            if (!isGlava(json.result.parts.indexOf(e)) && !e.payment && !e.partDonate){
-                GLAVA.add(new Glava(e.url, json.result.parts.indexOf(e), this, json));
+        try {
+            String uri = Main.SITE + "v1/book/get/?bookAlias=" + NAME;
+            StringBuilder site_ = new StringBuilder();
+            Main.GetJson(uri, site_);
+            Gson gson = new GsonBuilder().serializeNulls().create();
+            JsonRanobe json = gson.fromJson(site_.toString(), JsonRanobe.class);
+            System.out.println(FILE + "    " + json.result.parts.size());
+            Collections.reverse(json.result.parts);
+            for (PartRanobe e : json.result.parts) {
+                if (!isGlava(json.result.parts.indexOf(e)) && !e.payment && !e.partDonate) {
+                    GLAVA.add(new Glava(e.url, json.result.parts.indexOf(e), this, json));
+                }
             }
+        } catch (Exception e) {
         }
     }
     private boolean isGlava(int number){

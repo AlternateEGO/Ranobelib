@@ -12,7 +12,7 @@ public class Main{
     private static ArrayList<Ranobe> ranobe = new ArrayList<>();
 
     public static void main(String[] args){
-        String uri = "https://xn--80ac9aeh6f.xn--p1ai/v1/book/list/?country=&limit=999";
+        String uri = "https://xn--80ac9aeh6f.xn--p1ai/api/v2/books?country=&limit=999";
         StringBuilder site_ = new StringBuilder();
         GetJson(uri, site_);
         Gson jgson = new GsonBuilder().serializeNulls().create();
